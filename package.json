@@ -1,0 +1,25 @@
+{
+  "name": "todos-server",
+  "version": "1.0.0",
+  "description": "Demo Todos app created with React, Express, MySQL, Sequelize and GraphQL.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rolaru/todos-server.git"
+  },
+  "keywords": [
+    "Todos",
+    "server",
+    "demo",
+    "app"
+  ],
+  "author": "Razvan Olaru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolaru/todos-server/issues"
+  },
+  "homepage": "https://github.com/rolaru/todos-server#readme"
+}
