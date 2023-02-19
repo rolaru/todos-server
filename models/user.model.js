@@ -1,4 +1,4 @@
-const { Model } = require('sequelize');
+const { Sequelize, Model } = require('sequelize');
 
 const UserModel = (sequelize, DataTypes) => {
   class User extends Model {
@@ -8,9 +8,9 @@ const UserModel = (sequelize, DataTypes) => {
   }
 
   User.init({
-    fullName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
+    fullName: Sequelize.STRING,
+    email: Sequelize.STRING,
+    password: Sequelize.STRING
   }, {
     sequelize,
     modelName: 'User',

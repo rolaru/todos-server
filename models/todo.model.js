@@ -1,6 +1,6 @@
-const { Model } = require('sequelize');
+const { Sequelize, Model } = require('sequelize');
 
-const TodoModel = (sequelize, DataTypes) => {
+const TodoModel = (sequelize) => {
   class Todo extends Model {
     static associate(models) {
       Todo.belongsTo(models.User);
@@ -8,8 +8,9 @@ const TodoModel = (sequelize, DataTypes) => {
   }
 
   Todo.init({
-    content: DataTypes.STRING,
-    isDone: DataTypes.BOOLEAN
+    content: Sequelize.STRING,
+    isDone: Sequelize.BOOLEAN,
+    userId: Sequelize.INTEGER.UNSIGNED
   }, {
     sequelize,
     modelName: 'Todo',
