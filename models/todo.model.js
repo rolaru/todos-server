@@ -8,9 +8,26 @@ const TodoModel = (sequelize) => {
   }
 
   Todo.init({
-    content: Sequelize.STRING,
-    isDone: Sequelize.BOOLEAN,
-    userId: Sequelize.INTEGER.UNSIGNED
+    content: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    isDone: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
+    userId: {
+      type: Sequelize.INTEGER.UNSIGNED,
+      allowNull: false,
+      references: {
+        model: 'User',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     modelName: 'Todo',

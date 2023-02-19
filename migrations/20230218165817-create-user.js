@@ -1,3 +1,5 @@
+const { emailRegex } = require('./../common/utils');
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('User', {
@@ -8,13 +10,27 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED
       },
       fullName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true
+        }
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          notEmpty: true,
+          is: emailRegex
+        }
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true
+        }
       }
     });
   },

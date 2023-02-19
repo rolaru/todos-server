@@ -8,14 +8,20 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED
       },
       content: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: true
+        }
       },
       isDone: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       },
       userId: {
-        allowNull: false,
         type: Sequelize.INTEGER.UNSIGNED,
+        allowNull: false,
         references: {
           model: 'User',
           key: 'id'

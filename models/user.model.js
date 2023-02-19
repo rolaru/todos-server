@@ -1,5 +1,7 @@
 const { Sequelize, Model } = require('sequelize');
 
+const { emailRegex } = require('./../common/utils');
+
 const UserModel = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
@@ -8,9 +10,29 @@ const UserModel = (sequelize, DataTypes) => {
   }
 
   User.init({
-    fullName: Sequelize.STRING,
-    email: Sequelize.STRING,
-    password: Sequelize.STRING
+    fullName: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notEmpty: true,
+        is: emailRegex
+      }
+    },
+    password: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',
