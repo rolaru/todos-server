@@ -53,13 +53,13 @@ authResolvers.mutations = {
     }
 
     const salt = await bcrypt.genSalt(parseInt(process.env.BCRYPT_SALT_ROUNDS));
-    await models.User.create({
+    const user = await models.User.create({
       email,
       fullName,
       password: await bcrypt.hash(password, salt)
     });
 
-    const token = await authHelper.createJwtToken({ email, fullName });
+    const token = await authHelper.createJwtToken({ id: user.id, email, fullName });
     await redisHelper.set(email, token, process.env.ACCESS_TOKEN_TTL);
 
     return token;
