@@ -15,5 +15,8 @@ Second, you will need to install the Redis in-memory store since it's used for s
 ### Install node packages
 Just run the `npm i` command.
 
+### Run the DB migrations
+Run the `npx sequelize-cli db:migrate` command.
+
 ### Start the server
 Run `npm run start-dev` and the server should open on http://localhost:80
