@@ -18,8 +18,8 @@ const typeDefs = `#graphql
   }
 
   type Mutation {
-    login(email: String!, password: String!): User!
-    register(email: String!, password: String!, fullName: String!): User!
+    login(email: String!, password: String!): String!
+    register(email: String!, password: String!, fullName: String!): String!
   
     createTodo(userId: ID!, content: String!): Todo!
     updateTodo(id: ID!, isDone: Boolean!): Boolean!
